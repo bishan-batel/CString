@@ -1,7 +1,7 @@
 # CString Example
 
 Example CString Class that I refer to a lot in
-[my C++ notes](https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B).
+[my C++ notes](https://bishan.app).
 
 ---
 
