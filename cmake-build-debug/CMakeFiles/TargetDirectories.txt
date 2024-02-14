@@ -1,3 +1,0 @@
-/home/bishan_/code/videos/CString/cmake-build-debug/CMakeFiles/CString.dir
-/home/bishan_/code/videos/CString/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/bishan_/code/videos/CString/cmake-build-debug/CMakeFiles/rebuild_cache.dir
