@@ -1,6 +1,8 @@
 #include <iostream>
 
+#include "c_string.hpp"
+
 int main() {
-  std::cout << "Hello, World!" << std::endl;
+  CString string{""};
   return 0;
 }

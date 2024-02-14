@@ -5,7 +5,6 @@
 #ifndef C_STRING_HPP
 #define C_STRING_HPP
 #include <ostream>
-#include <utility>
 
 #include "utils.hpp"
 
@@ -31,6 +30,7 @@ public:
    * \brief Creates a CString from a const char*
    * \param source Null terminated string slice to copy from
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Conversion+Constructor
    */
   explicit CString(const char* source);
 
