@@ -16,6 +16,8 @@
  * because we are assuming that the source & length are valid, eg.this invariant is true:
  * source is a contiguous sequence of length-number 'chars' in memory that is ended
  * by a null termination character ('\0')
+ *
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
  */
 CString::CString(const char* source, const usize length)
   : buffer(nullptr), length(length) {
@@ -32,6 +34,8 @@ CString::CString(const char* source, const usize length)
 /**
  * This constructor calls CString's unchecked constructor by calculating the length
  * of the source string using std::strlen
+ *
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
  */
 CString::CString(const char* const source)
   : CString(source, std::strlen(source)) {}
@@ -48,6 +52,8 @@ CString::CString(const CString& other)
  * Delete the memory we allocated.
  * If we allocated this memory, 99% of the time this means that we own this memory, and it
  * is our responsibility to free it.
+ *
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/The+Heap
  */
 CString::~CString() {
   delete buffer;
@@ -73,7 +79,6 @@ CString& CString::operator=(const CString& other) {
   return *this;
 }
 
-
 bool CString::operator==(const CString& rhs) const {
   // Ensure that the strings length matches, and then ensure that all contents
   // of the strings are the same using std::strcmp
@@ -83,6 +88,11 @@ bool CString::operator==(const CString& rhs) const {
 bool CString::operator!=(const CString& rhs) const {
   // Simply negate our previously overload == operator
   return !(*this == rhs);
+}
+
+std::ostream& operator<<(std::ostream& os, const CString& obj) {
+  // print out our cstring, length doesnt need to be shown
+  return os << obj.buffer;
 }
 
 // --------------------------------------------------------------------------------

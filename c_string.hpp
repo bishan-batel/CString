@@ -22,6 +22,7 @@ class CString {
   /**
    * \brief Unchecked CString Creation
    * Pre condition is that the length matches the source
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
    */
   explicit CString(const char* source, usize length);
 
@@ -29,30 +30,47 @@ public:
   /**
    * \brief Creates a CString from a const char*
    * \param source Null terminated string slice to copy from
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
    */
   explicit CString(const char* source);
 
   /**
    * \brief Copy data from another cstring
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Copy+Constructor
    */
   CString(const CString& other);
 
+  /**
+   * \brief Destructor that is called when a value of type CString is being deleted
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Destructor
+   */
   ~CString();
 
+  /**
+   * \brief 
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/R+and+L+Values
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Move+Semantics
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Noexcept
+   */
   CString(CString&& other) noexcept;
 
   /**
    * Assignment overload
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Assignment+Overload
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
    */
   CString& operator=(const CString& other);
 
   /**
    * Equality overload, to check if two strings are equal
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
    */
   bool operator==(const CString& rhs) const;
 
   /**
    * Inequality overload, to check if two strings are not equal
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
    */
   bool operator!=(const CString& rhs) const;
 
@@ -61,21 +79,19 @@ public:
    * of of what std::cout << my_cstring should do - allowing us to print a instance
    * of our class to the console (or any other stream) easier.
    *
-   * The 'friend' keyword in this case is just referring to how we are defining behaviour
-   * to a class that isnt the one we are defining, eg. defining what << to a String is for std::ostream
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Friend+Methods
    */
-  friend std::ostream& operator<<(std::ostream& os, const CString& obj) {
-    // print out our cstring, length doesnt need to be shown
-    return os << obj.buffer;
-  }
+  friend std::ostream& operator<<(std::ostream& os, const CString& obj);
 
   /**
    * \brief Pointer to CString (const char*)
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Getters
    */
   [[nodiscard]] const char* get_buffer() const;
 
   /**
    * \brief Length of the string
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Getters
    */
   [[nodiscard]] usize size() const;
 };
