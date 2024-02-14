@@ -12,8 +12,8 @@ All parts of this project are annotated with a link to a note on https://bishan.
 
 ## Source Files
 
-**[Header File](https://github.com/bishan-batel/CString/blob/main/c_string.hpp)** | *
-*[Source File](https://github.com/bishan-batel/CString/blob/main/c_string.cpp)**
+**[Header File](https://github.com/bishan-batel/CString/blob/main/c_string.hpp)** |
+**[Source File](https://github.com/bishan-batel/CString/blob/main/c_string.cpp)**
 
 > [!note]
 **[Type Naming Convention](https://github.com/bishan-batel/CString/blob/main/utils.hpp)**
