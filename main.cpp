@@ -3,13 +3,12 @@
 #include "c_string.hpp"
 
 int main() {
-  CString string{"bruh"};
+  CString bruh{"bruh"};
+  CString moment{"moment"};
 
-  std::cout << string << std::endl;
-  //
-  // string += CString(" moment");
-  //
-  // std::cout << string << std::endl;
+  std::cout << bruh << std::endl;
+  bruh += moment;
 
+  std::cout << bruh << std::endl;
   return 0;
 }

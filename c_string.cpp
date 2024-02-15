@@ -58,7 +58,7 @@ CString::CString(const CString& other)
  * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/The+Heap
  */
 CString::~CString() {
-  delete buffer;
+  delete[] buffer;
 }
 
 CString::CString(CString&& other) noexcept
