@@ -5,6 +5,8 @@
 #include "c_string.hpp"
 
 #include <cstring>
+#include <iostream>
+#include <utility>
 
 
 // --------------------------------------------------------------------------------
@@ -59,19 +61,21 @@ CString::~CString() {
   delete buffer;
 }
 
-CString::CString(CString&& other) noexcept: buffer(other.buffer),
-                                            length(other.length) {}
+CString::CString(CString&& other) noexcept
+  : buffer(std::exchange(other.buffer, nullptr)),
+    length(std::exchange(other.length, 0)) {}
 
 // --------------------------------------------------------------------------------
 // Operator Overloads
 // --------------------------------------------------------------------------------
 
-CString& CString::operator=(const CString& other) {
+CString& CString::operator=(CString&& other) noexcept {
   // If we are reassigning ourself to ourself, skip
   if (this == &other) return *this;
 
-  buffer = other.buffer;
-  length = other.length;
+  // https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Move+Semantics
+  buffer = std::exchange(other.buffer, nullptr);
+  length = std::exchange(other.length, 0);
 
   // Return a reference to ourself
   // If you are unfamiliar with this syntax, read here:
@@ -88,6 +92,23 @@ bool CString::operator==(const CString& rhs) const {
 bool CString::operator!=(const CString& rhs) const {
   // Simply negate our previously overload == operator
   return !(*this == rhs);
+}
+
+CString CString::operator+(const CString& rhs) const {
+  const usize new_length = length + rhs.length;
+
+  const auto str = new char[new_length + 1];
+  str[new_length] = '\0';
+
+  std::strcpy(str, buffer);
+  std::strcpy(str + length, rhs.buffer);
+
+  return CString{str, new_length};
+}
+
+CString& CString::operator+=(const CString& string) {
+  // https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Reference#A+note+on+Conversion
+  return *this = *this + string;
 }
 
 std::ostream& operator<<(std::ostream& os, const CString& obj) {

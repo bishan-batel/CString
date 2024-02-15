@@ -58,9 +58,11 @@ public:
   /**
    * Assignment overload
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Assignment+Overload
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Move+Semantics
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
    */
-  CString& operator=(const CString& other);
+  CString& operator=(CString&& other) noexcept;
+
 
   /**
    * Equality overload, to check if two strings are equal
@@ -73,6 +75,19 @@ public:
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
    */
   bool operator!=(const CString& rhs) const;
+
+  /**
+   * Add overload, for concating two strings
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
+   */
+  CString operator+(const CString& rhs) const;
+
+  /**
+   * Add Assign overload, for concating two strings
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Operator+Overloads
+   */
+  CString& operator+=(const CString& string);
+
 
   /**
    * ostream << Operator overload, this simply is defining the behaviour
