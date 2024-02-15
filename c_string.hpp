@@ -26,7 +26,7 @@ class CString {
   /**
    * \brief Unchecked CString Creation
    * Pre condition is that the length matches the source
-   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
    */
   explicit CString(const char* source, usize length);
 
@@ -34,14 +34,14 @@ public:
   /**
    * \brief Creates a CString from a const char*
    * \param source Null terminated string slice to copy from
-   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Conversion+Constructor
    */
   explicit CString(const char* source);
 
   /**
    * \brief Copy data from another cstring
-   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Copy+Constructor
    */
   CString(const CString& other);

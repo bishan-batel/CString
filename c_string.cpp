@@ -19,7 +19,7 @@
  * source is a contiguous sequence of length-number 'chars' in memory that is ended
  * by a null termination character ('\0')
  *
- * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
  */
 CString::CString(const char* source, const usize length)
   : buffer(nullptr), length(length) {
@@ -37,7 +37,7 @@ CString::CString(const char* source, const usize length)
  * This constructor calls CString's unchecked constructor by calculating the length
  * of the source string using std::strlen
  *
- * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructors
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
  */
 CString::CString(const char* const source)
   : CString(source, std::strlen(source)) {}
