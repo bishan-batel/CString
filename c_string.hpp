@@ -4,6 +4,7 @@
 
 #ifndef C_STRING_HPP
 #define C_STRING_HPP
+#include <memory>
 #include <ostream>
 
 #include "utils.hpp"
@@ -14,7 +15,11 @@
  * to include the length
  */
 class CString {
-  char* buffer;
+  /**
+   * \brief Owned pointer to an array of characters
+   * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Smart+Pointers
+   */
+  std::unique_ptr<char[]> buffer;
   usize length;
 
 

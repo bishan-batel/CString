@@ -24,10 +24,10 @@
 CString::CString(const char* source, const usize length)
   : buffer(nullptr), length(length) {
   // create our new buffer for the string contents + null termination
-  buffer = new char[length + 1];
+  buffer.reset(new char[length + 1]);
 
   // copy contents of source to our buffer
-  std::strcpy(buffer, source);
+  std::strcpy(buffer.get(), source);
 
   // insert null termination
   buffer[length] = '\0';
@@ -51,15 +51,10 @@ CString::CString(const CString& other)
   : CString(other.get_buffer(), other.size()) {}
 
 /**
- * Delete the memory we allocated.
- * If we allocated this memory, 99% of the time this means that we own this memory, and it
- * is our responsibility to free it.
- *
+ * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Destructor
  * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/The+Heap
  */
-CString::~CString() {
-  delete[] buffer;
-}
+CString::~CString() = default;
 
 CString::CString(CString&& other) noexcept
   : buffer(std::exchange(other.buffer, nullptr)),
@@ -86,7 +81,7 @@ CString& CString::operator=(CString&& other) noexcept {
 bool CString::operator==(const CString& rhs) const {
   // Ensure that the strings length matches, and then ensure that all contents
   // of the strings are the same using std::strcmp
-  return length == rhs.length and std::strcmp(buffer, rhs.buffer) == 0;
+  return length == rhs.length and std::strcmp(buffer.get(), rhs.buffer.get()) == 0;
 }
 
 bool CString::operator!=(const CString& rhs) const {
@@ -100,8 +95,8 @@ CString CString::operator+(const CString& rhs) const {
   const auto str = new char[new_length + 1];
   str[new_length] = '\0';
 
-  std::strcpy(str, buffer);
-  std::strcpy(str + length, rhs.buffer);
+  std::strcpy(str, buffer.get());
+  std::strcpy(str + length, rhs.buffer.get());
 
   return CString{str, new_length};
 }
@@ -121,7 +116,7 @@ std::ostream& operator<<(std::ostream& os, const CString& obj) {
 // --------------------------------------------------------------------------------
 
 const char* CString::get_buffer() const {
-  return buffer;
+  return buffer.get();
 }
 
 usize CString::size() const {
