@@ -1,14 +1,16 @@
+/*
+ * Created by bishan_ on 2/14/24.
+*/
+
 #include <iostream>
 
-#include "c_string.hpp"
+#include "Tests.hpp"
+#include "utils.hpp"
 
-int main() {
-  CString bruh{"bruh"};
-  CString moment{"moment"};
+int main(const i32 argc, const char* const argv[]) {
+  if (argc <= 1) {
+    return Tests::run_all();
+  }
 
-  std::cout << bruh << std::endl;
-  bruh += moment;
-
-  std::cout << bruh << std::endl;
-  return 0;
+  return Tests::run(argv[1]);
 }

@@ -7,6 +7,8 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
 
+#include <variant>
+
 #include "cstdint"
 
 /**
@@ -74,5 +76,11 @@ using imax = std::intmax_t;
  * \brief Integer pointer typically used for pointer arithmetic
  */
 using iptr = std::intptr_t;
+
+/**
+ * \brief 0 Sized Type, useful when want to treat 'nothing' as a type instead of
+ * as 'void' (which is some strange magical thing that is builtinto the language)
+ */
+using unit = std::monostate;
 
 #endif //UTILS_HPP

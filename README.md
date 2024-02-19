@@ -1,19 +1,19 @@
-# CString Example
+# Bitching about C++ Examples
 
-Example CString Class that I refer to a lot in
+Example classes that I refer to a lot in
 [my C++ notes](https://bishan.app).
 
 ---
 
-This repo contains how I would write a class that wraps around a normal C-Style String in a safe manner with all C++
-conventions I would normally use.
+This repository contains fully expanded examples of how 
+I would write examples I used in my notes with full C++ features & safety conventions.
 
 All parts of this project are annotated with a link to a note on https://bishan.app that describes the relevant feature.
 
 ## Source Files
 
-**[Header File](https://github.com/bishan-batel/CString/blob/main/c_string.hpp)** |
-**[Source File](https://github.com/bishan-batel/CString/blob/main/c_string.cpp)**
+**[Header File](https://github.com/bishan-batel/CString/blob/main/examples/c_string/c_string.hpp)** |
+**[Source File](https://github.com/bishan-batel/CString/blob/main/examples/c_string/c_string.cpp)**
 
 > [!note]
 **[Type Naming Convention](https://github.com/bishan-batel/CString/blob/main/utils.hpp)**

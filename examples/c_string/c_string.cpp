@@ -5,7 +5,6 @@
 #include "c_string.hpp"
 
 #include <cstring>
-#include <iostream>
 #include <utility>
 
 
@@ -14,7 +13,7 @@
 // --------------------------------------------------------------------------------
 
 /**
- * This is CString's 'unchecked' constructor, it is unchecked
+ * This is c_string's 'unchecked' constructor, it is unchecked
  * because we are assuming that the source & length are valid, eg.this invariant is true:
  * source is a contiguous sequence of length-number 'chars' in memory that is ended
  * by a null termination character ('\0')
@@ -34,7 +33,7 @@ CString::CString(const char* source, const usize length)
 }
 
 /**
- * This constructor calls CString's unchecked constructor by calculating the length
+ * This constructor calls c_string's unchecked constructor by calculating the length
  * of the source string using std::strlen
  *
  * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
@@ -89,7 +88,10 @@ bool CString::operator!=(const CString& rhs) const {
   return !(*this == rhs);
 }
 
+
 CString CString::operator+(const CString& rhs) const {
+  // An Invariant of any class is 'this' points to a value of type T that is valid.
+
   const usize new_length = length + rhs.length;
 
   const auto str = new char[new_length + 1];

@@ -5,7 +5,6 @@
 #ifndef C_STRING_HPP
 #define C_STRING_HPP
 #include <memory>
-#include <ostream>
 
 #include "utils.hpp"
 
@@ -32,12 +31,16 @@ class CString {
 
 public:
   /**
-   * \brief Creates a CString from a const char*
+   * \brief Creates a c_string from a const char*
    * \param source Null terminated string slice to copy from
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Constructor
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Conversion+Constructor
    */
   explicit CString(const char* source);
+
+  CString(char source);
+
+  CString();
 
   /**
    * \brief Copy data from another cstring
@@ -47,7 +50,7 @@ public:
   CString(const CString& other);
 
   /**
-   * \brief Destructor that is called when a value of type CString is being deleted
+   * \brief Destructor that is called when a value of type c_string is being deleted
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Destructor
    */
   ~CString();
@@ -104,7 +107,7 @@ public:
   friend std::ostream& operator<<(std::ostream& os, const CString& obj);
 
   /**
-   * \brief Pointer to CString (const char*)
+   * \brief Pointer to c_string (const char*)
    * https://bishan.app/02+Personal/Me+Bitching+about+C%2B%2B/Getters
    */
   [[nodiscard]] const char* get_buffer() const;

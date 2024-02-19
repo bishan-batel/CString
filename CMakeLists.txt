@@ -3,7 +3,13 @@ project(CString)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CString main.cpp
-        c_string.cpp
-        c_string.hpp
-        utils.hpp)
+include_directories(".")
+
+add_executable(CString
+        "examples/c_string/test.cpp"
+        "examples/c_string/c_string.cpp"
+        "examples/c_string/c_string.hpp"
+        "utils.hpp"
+        main.cpp
+        Tests.hpp
+)
